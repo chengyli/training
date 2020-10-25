@@ -4,7 +4,7 @@ GOPATH="$(GOBASE)/vendor:$(GOBASE)"
 GOBIN=$(GOBASE)/bin
 GOFILES=$(wildcard *.go)
 
-all: go-init c-init-sig c-init-nosig
+all: go-init c-init-sig c-init-nosig image
 
 go-init: $(GOFILES)
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go build -o ./bin/go-init $(GOFILES)
@@ -21,4 +21,6 @@ image: go-init c-init-sig c-init-nosig
 clean:
 	rm -f ./bin/*
 	rm -f *.o
+	docker stop sig-proc;docker rm sig-proc
+	docker rmi registery/sig-proc:v1
 
