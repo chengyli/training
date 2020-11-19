@@ -8,8 +8,8 @@ mkdir -p /tmp/test2
 rm -f /tmp/test2/*
 docker stop fio_test2;docker rm fio_test2
 
-docker run -d --name fio_test1 --volume /tmp/test1:/tmp  registery/fio:v1 sleep 3600
-docker run -d --name fio_test2 --volume /tmp/test2:/tmp  registery/fio:v1 sleep 3600
+docker run -d --name fio_test1 --volume /tmp/test1:/tmp  registry/fio:v1 sleep 3600
+docker run -d --name fio_test2 --volume /tmp/test2:/tmp  registry/fio:v1 sleep 3600
 
 sleep 2
 

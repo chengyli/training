@@ -4,7 +4,7 @@ mkdir -p /tmp/test1
 rm -f /tmp/test1/*
 docker stop fio_test1;docker rm fio_test1
 
-docker run -d --name fio_test1 --volume /tmp/test1:/tmp  registery/fio:v1 sleep 3600
+docker run -d --name fio_test1 --volume /tmp/test1:/tmp  registry/fio:v1 sleep 3600
 
 sleep 2
 

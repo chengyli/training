@@ -1,7 +1,7 @@
 #!/bin/bash
 docker stop mem_alloc;docker rm mem_alloc
 
-docker run -d --name mem_alloc registery/mem_alloc:v1
+docker run -d --name mem_alloc registry/mem_alloc:v1
 
 sleep 2
 CONTAINER_ID=$(sudo docker ps --format "{{.ID}}\t{{.Names}}" | grep -i mem_alloc | awk '{print $1}')
