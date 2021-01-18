@@ -6,6 +6,7 @@
 #include <linux/uaccess.h>
 #include <linux/sched.h>
 #include <linux/delay.h>
+#include <linux/version.h>
 #define BUFSIZE  100
 
 MODULE_LICENSE("GPL");
@@ -29,11 +30,18 @@ static ssize_t myread(struct file *file, char __user * ubuf, size_t count,
 	return 0;
 }
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
+static struct proc_ops myops = {
+        .proc_read     = myread,
+        .proc_write    = mywrite,
+};
+#else
 static struct file_operations myops = {
 	.owner = THIS_MODULE,
 	.read = myread,
 	.write = mywrite,
 };
+#endif
 
 static int simple_init(void)
 {
