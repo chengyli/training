@@ -1,6 +1,6 @@
 all: image
 
 image:
-	docker build -t registry/fio:v1 .
+	docker build -t registery/fio:v1 .
 clean:
-	docker rmi registry/fio:v1
+	docker rmi registery/fio:v1
